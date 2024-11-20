@@ -1,43 +1,49 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('background.jpg');  /* Link your background image */
+  background-image: url('background.jpg'); /* Use your image here */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  text-align: center;
   margin: 0;
   padding: 0;
   color: white;
+  height: 100vh;  /* Make the body take full screen height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .game-container {
-  margin: 50px auto;
-  padding: 30px;
-  border-radius: 15px;
   width: 90%;
   max-width: 700px;
+  padding: 30px;
+  border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.6);  /* Dark semi-transparent background */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
+  transition: transform 0.5s ease-in-out;
 }
 
 button {
   padding: 12px 20px;
-  background: linear-gradient(90deg, #00c6ff, #0072ff);  /* Gradient color */
+  background: linear-gradient(90deg, #00c6ff, #0072ff); /* Gradient color */
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.5em;
   transition: transform 0.2s;
 }
 
 button:hover {
-  transform: scale(1.05);  /* Slightly enlarges the button on hover */
+  transform: scale(1.1);  /* Slightly enlarges the button on hover */
 }
 
 input {
@@ -51,14 +57,14 @@ input {
 }
 
 input:focus {
-  border-color: #0072ff;  /* Changes border color on focus */
+  border-color: #0072ff; /* Changes border color on focus */
 }
 
 #status {
   margin-top: 20px;
   font-size: 1.2em;
   opacity: 0;
-  transition: opacity 0.5s;  /* Smooth fade-in effect */
+  transition: opacity 0.5s; /* Smooth fade-in effect */
 }
 
 #status.show {
