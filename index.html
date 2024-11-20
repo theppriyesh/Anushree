@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Game</title>
+  <title>Treasure Hunt Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="game-container">
-    <h1>Welcome to the 20-Level Game!</h1>
-    <div id="level-content">
-      <p id="question">Ready to start the game?</p>
-      <input type="text" id="answer" placeholder="Your answer here">
-      <button onclick="checkAnswer()">Submit</button>
-    </div>
-    <p id="status"></p>
+    <h1 id="question">Are you ready to start the treasure hunt?</h1>
+    <input type="text" id="answer" placeholder="Type your answer here">
+    <button onclick="checkAnswer()">Submit Answer</button>
+    <div id="status"></div>
   </div>
 
   <script src="game.js"></script>
