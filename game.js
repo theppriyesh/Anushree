@@ -1,7 +1,6 @@
 let currentLevel = 1;
 const totalLevels = 20;
 
-// 20 Random Questions and Answers
 const questions = [
   "What is the color of the sky?",
   "Who is the author of Harry Potter?",
@@ -26,43 +25,52 @@ const questions = [
 ];
 
 const answers = [
-  "blue",                // 1
-  "jk rowling",          // 2
-  "12",                  // 3
-  "mars",                // 4
-  "paris",               // 5
-  "pacific",             // 6
-  "everest",             // 7
-  "leonardo da vinci",   // 8
-  "avocado",             // 9
-  "lion",                // 10
-  "asia",                // 11
-  "8",                   // 12
-  "benjamin franklin",   // 13
-  "nile",                // 14
-  "yen",                 // 15
-  "vatican city",        // 16
-  "alexander graham bell", // 17
-  "diamond",             // 18
-  "joe biden",           // 19
-  "cheetah"              // 20
+  "blue",
+  "jk rowling",
+  "12",
+  "mars",
+  "paris",
+  "pacific",
+  "everest",
+  "leonardo da vinci",
+  "avocado",
+  "lion",
+  "asia",
+  "8",
+  "benjamin franklin",
+  "nile",
+  "yen",
+  "vatican city",
+  "alexander graham bell",
+  "diamond",
+  "joe biden",
+  "cheetah"
 ];
 
 function checkAnswer() {
   const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
   const correctAnswer = answers[currentLevel - 1].toLowerCase();
 
+  const statusElement = document.getElementById('status');
+
   if (userAnswer === correctAnswer) {
-    document.getElementById('status').textContent = "Correct! Moving to next level...";
+    statusElement.textContent = "Correct! Moving to the next level...";
+    statusElement.classList.add("show");
     currentLevel++;
     if (currentLevel <= totalLevels) {
       document.getElementById('question').textContent = questions[currentLevel - 1];
       document.getElementById('answer').value = ''; // Clear the answer field
     } else {
       document.getElementById('question').textContent = "Congratulations! You finished the game!";
-      document.getElementById('status').textContent = "Here's your heartfelt letter: [Insert letter text]";
+      statusElement.textContent = "Here's your heartfelt letter: [Insert letter text]";
     }
   } else {
-    document.getElementById('status').textContent = "Oops! Try again.";
+    statusElement.textContent = "Oops! Try again.";
+    statusElement.classList.add("show");
   }
+
+  // Hide the status message after 2 seconds
+  setTimeout(() => {
+    statusElement.classList.remove("show");
+  }, 2000);
 }
