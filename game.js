@@ -1,71 +1,52 @@
 let currentLevel = 1;
 const totalLevels = 20;
+let userResponses = []; // To store responses
 
 const questions = [
-  "What is the color of the sky?",
-  "Who is the author of Harry Potter?",
-  "What is 5 + 7?",
-  "Which planet is known as the Red Planet?",
-  "What is the capital of France?",
-  "Which ocean is the largest?",
-  "What is the name of the tallest mountain?",
-  "Who painted the Mona Lisa?",
-  "What is the main ingredient in guacamole?",
-  "Which animal is known as the King of the Jungle?",
-  "What is the largest continent?",
-  "What is the square root of 64?",
-  "Who discovered electricity?",
-  "What is the longest river in the world?",
-  "What is the currency used in Japan?",
-  "Which is the smallest country in the world?",
-  "Who invented the telephone?",
-  "What is the hardest natural substance on Earth?",
-  "Who is the president of the USA?",
-  "What is the fastest land animal?"
-];
-
-const answers = [
-  "blue",
-  "jk rowling",
-  "12",
-  "mars",
-  "paris",
-  "pacific",
-  "everest",
-  "leonardo da vinci",
-  "avocado",
-  "lion",
-  "asia",
-  "8",
-  "benjamin franklin",
-  "nile",
-  "yen",
-  "vatican city",
-  "alexander graham bell",
-  "diamond",
-  "joe biden",
-  "cheetah"
+  "Are you ready to start the treasure hunt?",
+  "What is your favorite color?",
+  "What was the best moment we shared together?",
+  "What's your dream vacation destination?",
+  "Who is your biggest inspiration?",
+  "What was the first movie we watched together?",
+  "What was your first impression of me?",
+  "What’s your favorite food?",
+  "Where do you see yourself in 5 years?",
+  "What is one thing you've always wanted to do?",
+  "If you could be anywhere right now, where would it be?",
+  "What was the first song you heard when you woke up today?",
+  "If you had a superpower, what would it be?",
+  "What’s your favorite childhood memory?",
+  "Who would you want to meet if you could meet anyone?",
+  "What’s one thing you’ve always wanted to learn?",
+  "What’s the most adventurous thing you’ve done?",
+  "What’s your favorite book or author?",
+  "What’s something you’ve learned about yourself recently?",
+  "What’s the best piece of advice you’ve ever received?"
 ];
 
 function checkAnswer() {
-  const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
-  const correctAnswer = answers[currentLevel - 1].toLowerCase();
-
+  const userAnswer = document.getElementById('answer').value.trim();
   const statusElement = document.getElementById('status');
 
-  if (userAnswer === correctAnswer) {
-    statusElement.textContent = "Correct! Moving to the next level...";
+  // Save the response for later reference
+  userResponses.push(userAnswer);
+  
+  if (userAnswer) {
+    statusElement.textContent = "Correct! Let's move to the next clue...";
     statusElement.classList.add("show");
     currentLevel++;
+    
     if (currentLevel <= totalLevels) {
       document.getElementById('question').textContent = questions[currentLevel - 1];
-      document.getElementById('answer').value = ''; // Clear the answer field
+      document.getElementById('answer').value = ''; // Clear the input field
     } else {
-      document.getElementById('question').textContent = "Congratulations! You finished the game!";
+      document.getElementById('question').textContent = "Congratulations! You've completed the treasure hunt!";
       statusElement.textContent = "Here's your heartfelt letter: [Insert letter text]";
+      document.getElementById('answer').style.display = 'none'; // Hide the input field after the last question
     }
   } else {
-    statusElement.textContent = "Oops! Try again.";
+    statusElement.textContent = "Oops! Please provide an answer.";
     statusElement.classList.add("show");
   }
 
